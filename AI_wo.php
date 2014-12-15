@@ -43,7 +43,7 @@ textarea#aiCliDir:focus {background: #f5f5f5;border:3px solid blue;background: u
 	-webkit-appearance: none;
 	border-radius: 5px;
 }
-
+span.aiCliLabel {position:relative;left:25px;top:3px;font-family: Verdana, sans-serif;font-size:17px;color:grey } 
 input {	font-family: Verdana, sans-serif;
 	font-size: 12px;}
 input.svcName {box-sizing:content-box;height: 18px; font-family: Verdana, sans-serif;font-size:12px;background-color:#EBEBE0;text-align:left;border-collapse:collapse;border: 1pt solid #CC1100;border-radius: 3px;}
@@ -222,7 +222,7 @@ validate();
 <tr height=18 style='height:18px'>
 
 
-     <td colspan=2 height=15 valign="top" style='height:15.75pt;border-top:none;border-right:none'><span style="float;position:relative;left:25px;font-family: Verdana, sans-serif;font-size:17px;color:grey">Enter Directives Here:</span> <!--<span style='color:grey;font-weight:bold;font-family: Verdana, sans-serif;font-size:11px'>Use  temp Rank Code 00/00</span> --></td>
+     <td colspan=2 height=15 valign="top" style='height:15.75pt;border-top:none;border-right:none'><span class=aiCliLabel>Enter Directives Here:</span> <!--<span style='color:grey;font-weight:bold;font-family: Verdana, sans-serif;font-size:11px'>Use  temp Rank Code 00/00</span> --></td>
      <td colspan=3 valign="top" style='border-right:1.0pt solid black;border-left:none'>
 	<!-- <input type="checkbox" onClick="zeroRC(this.form)" id="tempRC" name="tempRC"> -->
      <td colspan=2 valign="top" class=xl53 style='border-top:none;text-align:left'>Account Manager</td>
@@ -234,8 +234,7 @@ validate();
 <td colspan=2></td>
    <tr height=18 style='height:12.75pt'>
        <td height=18 colspan=10 valign="top" class=xl47 style='height:75.75pt;text-align:center'>
-<textarea  name="aiCliDir" cols="92" rows="8" id="aiCliDir" tabindex=3>
-<?php echo htmlspecialchars($_POST['aiCliDir']);?> </textarea>
+<textarea  name="aiCliDir" class="aiCliDir" cols="92" rows="8" id="aiCliDir" tabindex=3><?php echo htmlspecialchars($_POST['aiCliDir']);?></textarea>
       </td>
    </tr>
    <tr height=22 style='height:22px'>

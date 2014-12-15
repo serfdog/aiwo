@@ -225,29 +225,21 @@ function validate() {
 	$error_msg = "<li> The highlighted field is required, please fill in and re-submit."; 
 	$error = 0;
 	}
-
+/*
+	background: url(images/ailogo200.gif) top right no-repeat;
+	background-attachment:fixed
+*/
 	if(!$print_name){
 	echo '<style type="text/css">INPUT.print_name {background-color:gold;border: 1px solid red;height: 18px;position:relative;top:-4px;left:0px}</style>';
 	  }
 	 if(!$aiClient){
 	 echo '<style type="text/css">INPUT.aiClient {background-color:gold;border: 1px solid red;height: 18px;}</style>';
 	  }  
-	  if(!$aiCliDir){
-	 echo '<style type="text/css">textarea#aiCliDir {
-		background-color:gold;
-		border: 1px solid red;
-		width:525px;
-		height:98px;
-		border: 3px solid #cccccc;
-		padding: 5px;
-		font-family: Tahoma, sans-serif;`
-		background-image: url(images/ailogo200.gif);
-		background-position: bottom right;
-		background-repeat: no-repeat;
-		margin:0 auto;
-		overflow:auto;
-	}
-	 </style>';
+	  $cliDirlen=0;
+	  $cliDirlen = strlen($aiCliDir);
+	      #echo $cliDirlen;
+	  if(strlen($aiCliDir) < 1){
+	 echo '<style type="text/css">span.aiCliLabel {background-color:gold;border-radius:3px;border: 1px solid red;position:relative;left:25px;top:3px;font-family: Verdana, sans-serif;font-size:17px;color:grey}</span>';
 	  }
 	  if(!$aiRcvBy){
 	 echo '<style type="text/css">INPUT.aiRcvBy {background-color:gold;border: 1px solid red;height: 18px;}</style>';
@@ -271,7 +263,7 @@ function validate() {
 	  if(!$svcSt){
 	 echo '<style type="text/css">input.svcSt {background-color:gold;border: 1px solid red;height: 18px;}</style>';
 	  }
-
+  
 
 	  	 if(!$d1){
 	 echo '<style type="text/css">INPUT.d1 {background-color:gold;border: 1px solid red;height: 18px;}</style>';
@@ -303,7 +295,7 @@ function validate() {
 		}
 	else
 		{ //error_msg placement
-		echo "<div  style=\"padding: 10px; position: absolute; float: right; right: 75px; top: 3px; z-index: 16; color: blue; background-color:white;border: 3px solid blue ;font-weight:normal;font-size: 12px;border-radius:5px\"> Please address the following:<ul>$error_msg</ul></div>";
+		echo "<div  style=\"padding: 10px; position: absolute; float: right; right: 75px; top: 3px; z-index: 16; color: blue; background-color:white;border: 3px solid #597ccf ;font-weight:normal;font-size: 12px;border-radius:5px\"> Please address the following:<ul>$error_msg</ul></div>";
 		}
 
 	 }
