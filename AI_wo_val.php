@@ -9,7 +9,7 @@ function validate() {
 	$check_today_t = strtotime($check_today); //time datatype for comparison
 		//Set error flag here
 		global $error;
-		$error = 1;
+		$error = 0;
 	$aiRcvDt = $_POST['today_date']; #readonly
 	$aiCCPO = htmlspecialchars($_POST['aiCCPO']); ##readonly Branch 776
 //------form name, tab order, PDO placement
@@ -79,7 +79,6 @@ function validate() {
 	$h1 = htmlspecialchars($_POST['h1']);
 	
 	$d2 = htmlspecialchars(trim($_POST['d2']));
-echo $d2;
 	if (empty($d2))$d2='1/0/1900';else $d2;
 	$s2 = htmlspecialchars($_POST['s2']);
 	$e2 = htmlspecialchars($_POST['e2']);
@@ -208,11 +207,18 @@ echo $d2;
 	
 	$cOth= htmlspecialchars($_POST['cOth']);
 	$qOth= htmlspecialchars($_POST['qOth']);
-	$tOth= htmlspecialchars($_POST['tOth']);	
+	$tOth= htmlspecialchars($_POST['tOth']);
+//strlen(concatCheckboxes Attire)
+	
+	$sAttire = $sStd.$sSTi.$sPlo.$sOth.$sCas;
+	#echo "Concat Str: " . $sAttire . "<BR>";
+	$len = strlen($sAttire);
+	#echo "Length :" . $len;
+  
 	
 	$print_name = htmlspecialchars($_POST['print_name']);
 	//Highlight unfilled mandatory fields- removed AMDA || (!$aiBill)
-/*	 if ((!$aiRcvBy) || (!$aiCliDir) || (!$svcName) || (!$svcAddr) || (!$svcCity) 
+	 if ((!$aiRcvBy) || (!$aiCliDir) || (!$svcName) || (!$svcAddr) || (!$svcCity) 
 	    || (!$svcRpt) || (!$svcPh)  || (!$svcSt) || (!$d1) || (!$s1) || (!$e1) || (!$n1) || (!$h1) 
 	    || (!$print_name))  
 	{
@@ -220,15 +226,12 @@ echo $d2;
 	$error = 0;
 	}
 
-echo $print_name;
 	if(!$print_name){
 	echo '<style type="text/css">INPUT.print_name {background-color:gold;border: 1px solid red;height: 18px;position:relative;top:-4px;left:0px}</style>';
 	  }
-echo $aiClient;
 	 if(!$aiClient){
 	 echo '<style type="text/css">INPUT.aiClient {background-color:gold;border: 1px solid red;height: 18px;}</style>';
-	  }
-echo $aiCliDir;  
+	  }  
 	  if(!$aiCliDir){
 	 echo '<style type="text/css">textarea#aiCliDir {
 		background-color:gold;
@@ -246,7 +249,6 @@ echo $aiCliDir;
 	}
 	 </style>';
 	  }
-echo $aiRcvBy;
 	  if(!$aiRcvBy){
 	 echo '<style type="text/css">INPUT.aiRcvBy {background-color:gold;border: 1px solid red;height: 18px;}</style>';
 	  }	 
@@ -286,8 +288,10 @@ echo $aiRcvBy;
 	  	 if(!$h1){
 	 echo '<style type="text/css">INPUT.h1 {background-color:gold;border: 1px solid red;height: 18px;}</style>';
 	 }
-
-	*/
+		if($len < 3){ #line 213 gets length $sAttire 
+	 echo '<style type="text/css">span.Attire {background-color:gold;height: 18px;}</style>';
+	  }
+	
 	
 	 //SEND TO PROCESSING 1 DO NOT PROCESS 0
 	 if($error == 1)
@@ -299,7 +303,7 @@ echo $aiRcvBy;
 		}
 	else
 		{ //error_msg placement
-		echo "<div  style=\"padding: 10px; position: absolute; float: right; right: 75px; top: 3px; z-index: 16; color: blue; background-color:white;border: 1px solid navy ;font-weight:normal;font-size: 12px;border-radius:5px\"> Please address the following:<ul>$error_msg</ul></div>";
+		echo "<div  style=\"padding: 10px; position: absolute; float: right; right: 75px; top: 3px; z-index: 16; color: blue; background-color:white;border: 3px solid blue ;font-weight:normal;font-size: 12px;border-radius:5px\"> Please address the following:<ul>$error_msg</ul></div>";
 		}
 
 	 }

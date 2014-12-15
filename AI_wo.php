@@ -162,14 +162,15 @@ input.wolowbill1 {height: 18px; font-family: Verdana, sans-serif;font-size:12px;
         }
 </style>
 <? //-----set aiRcvBy input
-echo $_SERVER['PHP_AUTH_USER'] . " AUTH<BR>";
+#echo $_SERVER['PHP_AUTH_USER'] . " AUTH<BR>";
 #echo $_SERVER['PHP_REMOTE_USER'] . " REMOTE<BR>";
 $CurrUser='';
 if (($_SERVER['PHP_REMOTE_USER'] === 'crafidi@amda.edu') ||  ($_SERVER['PHP_AUTH_USER'] === 'crafidi@amda.edu')) $CurrUser = 'Christian Rafini';
 if (($_SERVER['PHP_REMOTE_USER'] === 'tzimbardi@amda.edu') ||  ($_SERVER['PHP_AUTH_USER'] === 'tzimbardi@amda.edu' )) $CurrUser = 'Tony Zimbardi';
 if (($_SERVER['PHP_REMOTE_USER'] === 'jgalgano@amda.edu')||  ($_SERVER['PHP_AUTH_USER'] === 'jgalgano@amda.edu')) $CurrUser = 'John Galgano';
-echo "<br>";
-echo $CurrUser;
+if (($_SERVER['PHP_REMOTE_USER'] === 'John')||  ($_SERVER['PHP_AUTH_USER'] === 'John')) $CurrUser = 'John Wilson';
+#echo "<br>";
+#echo $CurrUser;
 if (array_key_exists('_submit_check', $_POST)) {
 validate();
 } ?>
