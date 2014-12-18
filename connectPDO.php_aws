@@ -1,0 +1,33 @@
+<?php //Sample Database Connection Syntax for PHP and MySQL. 
+//echo $_SERVER['PHP_AUTH_USER'] . " login: AUTH<BR>";
+//echo $_SERVER['PHP_REMOTE_USER'] . " login: REMOTE<BR>";
+
+//Connect To Database 
+$hostname="localhost"; 
+$username="john"; $password="wilson"; 
+$dbname="aics"; 
+$usertable="aiword3"; 
+//$yourfield = "order_id"; 
+//mysql_connect($hostname,$username, $password) or die ("Cannot Connect"); 
+//mysql_select_db($dbname) or die ("Cannot select database"); # Check If Record Exists 
+
+$DBH = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
+//set user variable
+
+
+
+# using the shortcut ->query() method here since there are no variable
+# values in the select statement.
+/*
+$STH = $DBH->query("SELECT aiClient,aiRcvBy from aics.aiword3 WHERE aiClient is not null  order by id desc limit 5;");
+ 
+# setting the fetch mode
+$STH->setFetchMode(PDO::FETCH_ASSOC);
+ 
+while($row = $STH->fetch()) {
+    echo $row['aiClient'] . "<br>";
+    echo $row['aiRcvBy'] . "<p>";
+
+}
+*/
+?>

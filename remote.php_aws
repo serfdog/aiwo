@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta  charset=utf-8"/>
+  <title>AI Client Support Web</title>
+  <link href="facebox.css" media="screen" rel="stylesheet" type="text/css" />
+  <script src="jquery.js"></script>
+  <script src="facebox.js"></script>
+  <script type="text/javascript">
+    jQuery(document).ready(function($) {
+      $('a[rel*=facebox]').facebox({
+        loadingImage : 'loading.gif',
+        closeImage   : 'closelabel.png'
+      })
+    })
+  </script>
+</head>
+<body onLoad="jQuery.facebox({ ajax: 'remote.html' });"> </body></html>
