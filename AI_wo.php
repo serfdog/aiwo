@@ -1,11 +1,3 @@
-<?php 
-//echo $_SERVER['PHP_AUTH_USER'] . " AUTH<BR>";
-//echo $_SERVER['PHP_REMOTE_USER'] . " REMOTE<BR>";
-define('INCLUDE_CHECK',true);
-//CONNECT  
-include('connectPDO.php');
-include('AI_wo_val.php');
-?>
 <!DOCTYPE html>
 
 <head>
@@ -22,6 +14,15 @@ include('AI_wo_val.php');
 <script language='JavaScript' type='text/javascript' src='js/l3060.js'></script>
 <script language='JavaScript' type='text/javascript' src='js/chr.js'></script>
 <script language='JavaScript' type='text/javascript' src='js/sa.js'></script>
+<?php 
+//echo $_SERVER['PHP_AUTH_USER'] . " AUTH<BR>";
+//echo $_SERVER['PHP_REMOTE_USER'] . " REMOTE<BR>";
+define('INCLUDE_CHECK',true);
+//CONNECT  
+include('connectPDO.php');
+include('AI_wo_val.php');
+?>
+<!--<style type="text/css">INPUT.svcName{background-color:gold;border: 1px solid red;height: 18px;}</style> -->
 <style>
 *:focus {outline:none;}
 textarea#aiCliDir {	
@@ -46,9 +47,8 @@ textarea#aiCliDir:focus {background: #f5f5f5;border:3px solid blue;background: u
 span.aiCliLabel {position:relative;left:25px;top:3px;font-family: Verdana, sans-serif;font-size:17px;color:grey } 
 input {	font-family: Verdana, sans-serif;
 	font-size: 12px;}
-input.svcName {box-sizing:content-box;height: 18px; font-family: Verdana, sans-serif;font-size:12px;background-color:#EBEBE0;text-align:left;border-collapse:collapse;border: 1pt solid #CC1100;border-radius: 3px;}
+input.svcName{box-sizing:content-box;height: 18px; font-family: Verdana, sans-serif;font-size:12px;background-color:#EBEBE0;text-align:left;border-collapse:collapse;border: 1pt solid #CC1100;border-radius: 3px;}
 input.svcName:focus {background: #f5f5f5;border:1px solid blue;border-radius: 3px;text-align:center;}
-
 /*input.aiRcvBy {height: 18px; font-family: Verdana, sans-serif;font-size:12px;background-color:#EBEBE0;text-align:left;
 	    border-collapse:collapse;border: 1pt solid #CC1100;border-radius: 3px;}
 input.aiRcvBy:focus{background: #f5f5f5;border:1px solid blue;border-radius: 3px;text-align:center;} */
@@ -85,7 +85,7 @@ input.nreqd:focus {
    text-align:center;
 }
 input.rdonly {height: 18px; font-family: Verdana, sans-serif;font-size:12px;border-collapse:collapse;border: 1pt solid #F0C2B2;border-radius: 3px;text-align:left;}
-input.d1 {height: 18px; font-family: Verdana, sans-serif;font-size:12px;background-color:#EBEBE0;border-collapse:collapse;border: 1pt solid  #CC1100; border-radius: 3px;}
+input.d1 {height: 18px; font-family: Verdana, sans-serif;font-size:12px;background-color:#EBEBE0;border-collapse:collapse;border: 1pt solid  #CC1100; border-radius: 3px;text-align:center}
 input.s1 {height: 18px; font-family: Verdana, sans-serif;font-size:12px;background-color:#EBEBE0;border-collapse:collapse;border: 1pt solid  #CC1100; border-radius: 3px;text-align:center;}
 input.s1:focus {
     background: #f5f5f5; 
@@ -168,7 +168,8 @@ $CurrUser='';
 if (($_SERVER['PHP_REMOTE_USER'] === 'crafidi@amda.edu') ||  ($_SERVER['PHP_AUTH_USER'] === 'crafidi@amda.edu')) $CurrUser = 'Christian Rafini';
 if (($_SERVER['PHP_REMOTE_USER'] === 'tzimbardi@amda.edu') ||  ($_SERVER['PHP_AUTH_USER'] === 'tzimbardi@amda.edu' )) $CurrUser = 'Tony Zimbardi';
 if (($_SERVER['PHP_REMOTE_USER'] === 'jgalgano@amda.edu')||  ($_SERVER['PHP_AUTH_USER'] === 'jgalgano@amda.edu')) $CurrUser = 'John Galgano';
-if (($_SERVER['PHP_REMOTE_USER'] === 'John')||  ($_SERVER['PHP_AUTH_USER'] === 'John')) $CurrUser = 'John Wilson';
+if (($_SERVER['PHP_REMOTE_USER'] === 'jwils01@gmail.com')||  ($_SERVER['PHP_AUTH_USER'] === 'jwils01@gmail.com')) $CurrUser = 'John Wilson';
+if (($_SERVER['PHP_REMOTE_USER'] === 'John') ||  ($_SERVER['PHP_AUTH_USER'] === 'John')) $CurrUser = 'John Wilson';
 #echo "<br>";
 #echo $CurrUser;
 if (array_key_exists('_submit_check', $_POST)) {
@@ -231,6 +232,7 @@ validate();
    </tr>  <!--<tr>
        <td colspan=10 height=25 valign="top" class=xl51 style='height:24.75pt;border-top:none;font-family: Verdana, sans-serif;font-size:9px'>IF BRANCH NUMBER IS NOT 781 a Rank Code MUST be assigned to complete the work order. Rank codes are established by the responsible billing party.<br> Biller (or scheduler) can get additional information by contacting Tina Mukai.<br>&nbsp;</td>
      </tr> -->
+<!-- <span class="field-tip">test<span class="tip-content">TAB Advances cursor</span></span>  -->
 <td colspan=2></td>
    <tr height=18 style='height:12.75pt'>
        <td height=18 colspan=10 valign="top" class=xl47 style='height:75.75pt;text-align:center'>
@@ -245,9 +247,7 @@ validate();
    </tr>
    <tr height=20 style='height:12.75pt'>
      <td height=20 class=xl51 style='height:15.75pt;border-top:none;text-align:left'>Name</td>
-     <td colspan=4 class=xl29 style='border-right:1.0pt solid black;border-left:
-  none'><span class="field-tip"><input class=svcName name="svcName" type="text" size="34" value="<?=$_POST['svcName']?>" id="svcName" tabindex=9 placeholder="Enter the Location at AMDA"><span class="tip-content">TAB Advances cursor</span></span>
-         <!-- form input: svc_name --></td>
+     <td colspan=4 class=xl29 style='border-right:1.0pt solid black;border-left:none'><span class="field-tip"><input class="svcName" name="svcName" type="text" size="34" value="<?=$_POST['svcName']?>" id="svcName" tabindex=9 placeholder="Enter the Location at AMDA"><span class="tip-content">TAB Advances cursor</span></span></td>
      <td class=xl53 style='border-top:none;text-align:left'>Name</td>
      <td colspan=4 class=xl29 style='border-right:.5pt solid black;border-left:none;'><input class=nreqd  name="bName" type="text" size="34" value="<?=$_POST['bName']?>" id="bName" tabindex=17>
          <!-- form input: bill_name --></td>
@@ -367,7 +367,7 @@ validate();
       <? if ($_POST['LPaidUnpaid']=='Paid'){ echo "checked"; }?> checked >
        Paid
       </td>
-     <td height="22" class=xl26 style='text-align:center;font-size:11px;font-weight:bold;border-left:none;color:red'>DblClick</td>
+     <td height="22" class=xl26 style='text-align:center;font-size:10px;font-weight:bold;border-left:none;color:red'>Calculate</td>
    </tr>
    <tr height=17 style='height:12.75pt'>
      <td height=17 class=xl51 style='height:12.75pt;text-align:left'>Type</td>
@@ -391,8 +391,8 @@ validate();
          <input name="button" type=button onClick="displayDatePicker('d1');" value="select" tabindex=32></td>
      <td class=xl83 style='border-top:none;border-left:none'><input class=s1 name="s1" type="text" pattern="^\d{2}:\d{2}$" id="s1" size="4" maxlength="5" value="<?=$_POST['s1']?>" tabindex=34 placeholder="hh:mm"></td>
      <td class=xl83 style='border-top:none;border-left:none'><input class=e1 name="e1" type="text" pattern="^\d{2}:\d{2}$" id="e1" size="4" maxlength="5" value="<?=$_POST['e1']?>" tabindex=35 placeholder="hh:mm">     </td>
-     <td class=xl83 style='border-top:none;border-left:none'><input class=n1 name="n1" type="text" pattern="\d+" id="n1" size="2" maxlength="2" value="<?=$_POST['n1']?>" tabindex=36></td>
-     <td class=xl84 style='border-top:none;border-left:none;'><input class=h1 name="h1" type="text" id="h1" size="4" value="<?=$_POST['h1']?>" maxlength="5" onDblClick="calc(document.getElementsByName('s1')[0].value,document.getElementsByName('e1')[0].value,'h1',document.getElementsByName('n1')[0].value,document.getElementsByName('Lunch3060')[0].value,document.getElementsByName('Lunch3060')[1].value);hrTotal(this.form)" tabindex=37 placeholder="&nbsp;Here!"></td>
+     <td class=xl83 style='border-top:none;border-left:none'><input class=n1 name="n1" type="text" pattern="\d+" id="n1" size="2" maxlength="2" value="<?=$_POST['n1']?>" onChange="calc(document.getElementsByName('s1')[0].value,document.getElementsByName('e1')[0].value,'h1',document.getElementsByName('n1')[0].value);hrTotal(this.form)" placeholder="#" tabindex=36></td>
+     <td class=xl84 style='border-top:none;border-left:none;'><input class=h1 name="h1" type="text" id="h1" size="4" value="<?=$_POST['h1']?>" maxlength="5" onChange=hrTotal(this.form)" tabindex=37 placeholder="&nbsp;--"></td>
    </tr>
    <tr height=45 style='height:20.75pt'>
      <td height=51 class=xl51 style='height:18.75pt;border-top:none;text-align:left'>Armed</td>
@@ -405,8 +405,8 @@ validate();
          <input name="button2" type=button onClick="displayDatePicker('d2');" value="select" tabindex=38></td>
      <td class=xl83 style='border-top:none;border-left:none'><input class=nreqdate name="s2" type="text" pattern="^\d{2}:\d{2}$" id="s2" size="4" value="<?=$_POST['s2']?>" maxlength="5" tabindex=39></td>
      <td class=xl83 style='border-top:none;border-left:none'><input class=nreqdate name="e2" type="text" pattern="^\d{2}:\d{2}$" id="e2" value="<?=$_POST['e2']?>"size="4" maxlength="5" tabindex=40></td>
-<td class=xl83 style='border-top:none;border-left:none'><input class=nreqdate name="n2" type="text" pattern="\d+" id="n2" size="2" maxlength="2" value="<?=$_POST['n2']?>" tabindex=41></td>
-     <td class=xl82 style='border-top:none;border-left:none'><input class=nreqdate name="h2" type="text" id="h2" size="4" maxlength="5" value="<?=$_POST['h2']?>" onDblClick="calc(document.getElementsByName('s2')[0].value,document.getElementsByName('e2')[0].value,'h2',document.getElementsByName('n2')[0].value);hrTotal(this.form)" tabindex=42>     </td>
+<td class=xl83 style='border-top:none;border-left:none'><input class=nreqdate name="n2" type="text" pattern="\d+" id="n2" size="2" maxlength="2" value="<?=$_POST['n2']?>" onChange="calc(document.getElementsByName('s2')[0].value,document.getElementsByName('e2')[0].value,'h2',document.getElementsByName('n2')[0].value);hrTotal(this.form)"  tabindex=41></td>
+     <td class=xl82 style='border-top:none;border-left:none'><input class=nreqdate name="h2" type="text" id="h2" size="4" maxlength="5" value="<?=$_POST['h2']?>" onChange="hrTotal(this.form)" tabindex=42>     </td>
    </tr>
    <tr height=40 style='height:18.75pt'>
      <td colspan=4 height=16 class=xl48 style='border-right:1.0pt solid black;height:18.75pt'><span class=Attire>&nbsp;Attire&nbsp;</span></td>
@@ -523,7 +523,7 @@ validate();
    </tr>
    <tr height=40 style='height:15.75pt'>
      <td colspan=4 height=15 class=xl95 style='border-right:1.0pt solid black;
-  height:10px'><span style="position:relative;top:4px">Equipment Charged per Day</span><br><span style="position:relative;top:-1px;font-family:Verdana,sans-serif;font-size:9px;font-style:italic">Prices Subject to Change</span></td>
+  height:10px'><span style="position:relative;top:4px">Equipment Charged per Day</span><br><span style="position:relative;font-family:Verdana,sans-serif;font-size:9px;font-style:italic">Prices Subject to Change</span></td>
      <td align="left" style='text-align:center;height:18.75pt' colspan=2 class=xl81><input class=nreqdate name="d11" type="text" value="<?=$_POST['d11']?>" id="d11" size="10" tabindex=84  maxlength="12">
        <input type=button name="button11" value="select" onClick="displayDatePicker('d11');" tabindex=83></td>
      <td class=xl83 style='border-top:none;border-left:none'><input class=nreqdate name="s11" tabindex=84 value="<?=$_POST['s11']?>" type="text" pattern="^\d{2}:\d{2}$"  id="s11" size="4"></td>

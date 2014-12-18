@@ -1,7 +1,4 @@
 <?php 
-//session_name('tzLogin');
-//session_set_cookie_params(2*7*24*60*60);
-//session_start(); // AMDA version
 function validate() {
 	$aiRcvEm = $_SESSION['email']; //login htaccess?
 	//echo $_SESSION['email'];
@@ -20,28 +17,20 @@ function validate() {
 	$aiCliDir= htmlspecialchars($_POST['aiCliDir']); #3 text area
 	//echo "val aiCliDir: " . $aiCliDir  . " | ";
 
-/*	$aiCCBr = htmlspecialchars($_POST['aiCCBr']); #N/A AMDA  
+	$aiCCBr = htmlspecialchars($_POST['aiCCBr']); #N/A AMDA  
 	$aiBill = htmlspecialchars($_POST['aiBill']);
 	$aiCSC = htmlspecialchars($_POST['aiCSC']);
---debug if
-	if (empty($_POST['svcName'])) {
-	$svcName = 'Boy Howdy';
-	echo $svcName;
-	 }
-	else{
+/*--debug if */
 	$svcName = htmlspecialchars($_POST['svcName']);
-	echo $svcName;
-}
-*/
+	//echo strlen($svcName);
 	$aiOpMgr = htmlspecialchars($_POST['aiOpMgr']); #4 Javier Acuna 
-	$svcName = htmlspecialchars($_POST['svcName']); #5
-
 	$svcAddr = htmlspecialchars($_POST['svcAddr']); #6
 	$svcCity = htmlspecialchars($_POST['svcCity']); #7
 	$svcSt = htmlspecialchars($_POST['svcSt']); #8
 	$svcZip = htmlspecialchars($_POST['svcZip']); #9		
 	$svcRpt = htmlspecialchars($_POST['svcRpt']); #10	
 	$svcPh = htmlspecialchars($_POST['svcPh']); #11
+	//echo $svcPh;
 	$sepInv = htmlspecialchars($_POST['sepInv']); #12		
 	$bAddr = htmlspecialchars($_POST['bAddr']); #13
 	$bName = htmlspecialchars($_POST['bName']); #14
@@ -72,7 +61,7 @@ function validate() {
 	$sOth = htmlspecialchars($_POST['sOth']);#34
 	if (empty($sOth)) unset($rOth); else $rOth;
 	$d1 = htmlspecialchars(trim($_POST['d1']));
-	if (empty($d1))$d1='1/0/1900';else $d1;
+	if (empty($d1)){$d1='1/0/1900';} 
 	$s1 = htmlspecialchars($_POST['s1']);
 	$e1 = htmlspecialchars($_POST['e1']);
 	$n1 = htmlspecialchars($_POST['n1']);
@@ -219,16 +208,17 @@ function validate() {
 	$print_name = htmlspecialchars($_POST['print_name']);
 	//Highlight unfilled mandatory fields- removed AMDA || (!$aiBill)
 	 if ((!$aiRcvBy) || (!$aiCliDir) || (!$svcName) || (!$svcAddr) || (!$svcCity) 
-	    || (!$svcRpt) || (!$svcPh)  || (!$svcSt) || (!$d1) || (!$s1) || (!$e1) || (!$n1) || (!$h1) 
+	    || (!$svcRpt) || (!$svcPh)  || (!$svcSt) || ($d1=='1/0/1900') || (!$s1) || (!$e1) || (!$n1) || (!$h1) 
 	    || (!$print_name))  
 	{
 	$error_msg = "<li> The highlighted field is required, please fill in and re-submit."; 
 	$error = 0;
-	}
-/*
-	background: url(images/ailogo200.gif) top right no-repeat;
-	background-attachment:fixed
-*/
+	} else $error = 1;
+	//must run the guantlet
+	if (empty($svcName)) {
+	//echo $svcName . "Length " . strlen($svcName);
+	  echo '<style type="text/css">INPUT.svcName{background-color:gold;border: 1px solid red;height: 18px;}</style>';
+	 }
 	if(!$print_name){
 	echo '<style type="text/css">INPUT.print_name {background-color:gold;border: 1px solid red;height: 18px;position:relative;top:-4px;left:0px}</style>';
 	  }
@@ -244,11 +234,7 @@ function validate() {
 	  if(!$aiRcvBy){
 	 echo '<style type="text/css">INPUT.aiRcvBy {background-color:gold;border: 1px solid red;height: 18px;}</style>';
 	  }	 
-	  
-	 if(!$svcName){
-	 echo '<style type="text/css">INPUT.svcName {background-color:gold;border: 1px solid red;height: 18px;}</style>';
-	  }	 
-	  if(!$svcCity){
+	if(!$svcCity){
 	 echo '<style type="text/css">INPUT.svcCity {background-color:gold;border: 1px solid red;height: 18px;}</style>';
 	  }	 
 	  if(!$svcAddr){
@@ -258,14 +244,13 @@ function validate() {
 	 echo '<style type="text/css">INPUT.svcRpt {background-color:gold;border: 1px solid red;height: 18px;}</style>';
 	  }	 
 	  if(!$svcPh){
+	echo strlen($svcPh);
 	 echo '<style type="text/css">INPUT.svcPh {background-color:gold;border: 1px solid red;height: 18px;}</style>';
 	  }
 	  if(!$svcSt){
 	 echo '<style type="text/css">input.svcSt {background-color:gold;border: 1px solid red;height: 18px;}</style>';
 	  }
-  
-
-	  	 if(!$d1){
+  	 if($d1=='1/0/1900'){
 	 echo '<style type="text/css">INPUT.d1 {background-color:gold;border: 1px solid red;height: 18px;}</style>';
 	  }
 	  	 if(!$s1){
@@ -283,7 +268,6 @@ function validate() {
 		if($len < 3){ #line 213 gets length $sAttire 
 	 echo '<style type="text/css">span.Attire {background-color:gold;height: 18px;}</style>';
 	  }
-	
 	
 	 //SEND TO PROCESSING 1 DO NOT PROCESS 0
 	 if($error == 1)
